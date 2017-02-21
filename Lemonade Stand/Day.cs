@@ -8,6 +8,15 @@ namespace Lemonade_Stand
 {
     public class Day
     {
+        //member variables
+        public Day()
+        {
+            //constructor
+        }
+        private void method()
+        {
+
+        }
         //MakeRound
         //TODO need weather per one day
     }

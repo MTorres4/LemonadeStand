@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Lemonade_Stand
 {
-    class Instructions
+    public class Instructions
     {
+            //member variables
+        public Instructions()
+        {
+            //constructor
+        }
         private void Welcome()
         {
             Console.WriteLine("Welcome to Lemonade Stand!"
@@ -18,11 +23,16 @@ namespace Lemonade_Stand
                 + " /n the rest of the money. 'Spend money to make money', she adds."
                 + " /n Instructions: you have 7 days to sell your own recipe of"
                 + " /n lemonade. You will need to manage your wallet, inventory,"
-                + " /n and the price of your lemonade each day."
+                + " /n and adjust the price of your lemonade each day, accordingly."
                 + " /n Be aware, the weather has an impact as to how much lemonade"
                 + " /n you will sell and how much customers are willing to pay!"
-                + " /n Hopefully you will end day 7 with enough to buy the game!"
+                + " /n Hopefully you will end day 7 with enough money to buy the game!"
                 + " /n Good luck!");
         }
+        public void ShowInstructions()
+        {
+            Welcome();
+        }
     }
-}
+} //Q: difference between using 'Welcome()' in Program versus using interface to use this in 'Game'?
+//A: either use dot notation in game class or program class

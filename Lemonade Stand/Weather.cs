@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace Lemonade_Stand
 {
-    public class Wallet
+    public class Weather
     {
-        public double amount;
-
-        public Wallet()
+        //member variables
+        public Weather()
         {
-            amount = 20.00;
-            //TODO, if this reaches 0, send to end game
+            //constructor
+        }
+        private void method()
+        {
+
         }
     }
 }
