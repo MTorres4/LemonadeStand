@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace Lemonade_Stand
 {
-    class Sugar
+    public class Sugar : Items
     {
+        public Sugar ()
+        {
+            cost = 1.80;
+        }
+        public override void SetQuantities()
+        {
+            
+        }
+        public override void SetCost()
+        {
+            
+        }
     }
 }

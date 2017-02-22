@@ -13,79 +13,143 @@ namespace Lemonade_Stand
         {
             //constructor
         }
-        private void CupQuantities()
+        public void StoreFront()
         {
-            Console.WriteLine($"Cups: '25', '50', '100'"); //add {.cost} for each quantity
-            int GetCups = int.Parse(Console.ReadLine());
+            Console.WriteLine("Welcome to the 'Lemonade 4u Products and Stuff' store!"
+                + $" \n your current wallet balance is:"
+                + $" \n your current inventory is:"
+                + " \n type in which product you need: 'cups', 'lemons', 'sugar', or 'ice';"
+                + " \n or type in 'leave' to leave the store to go start your day of lemonade sales!"
+                + " \n Please type in one of the items to be able to restart to quit the game.");
+            string StoreMenuChoice = Console.ReadLine().ToLower().Trim();
 
-            switch (GetCups)
+            switch (StoreMenuChoice)
             {
-                case 25:
+                case "cups":
+                    SellCups(new Cups(), new Wallet());
                     break;
-                case 50:
+                case "lemons":
+                    SellLemons(new Lemons(), new Wallet());
                     break;
-                case 100:
+                case "sugar":
+                    SellSugar(new Sugar(), new Wallet());
+                    break;
+                case "ice":
+                    SellIce(new Ice(), new Wallet());
+                    break;
+                case "leave":
+                    //send to recipe and price
                     break;
                 default:
-                    Console.WriteLine("Please select one of the quantities.");
-                    CupQuantities();
+                    Console.WriteLine("Please select one of the options.");
+                    StoreFront();
+                    break;
+            }
+        }
+        private void SellCups(Cups cups, Wallet wallet)
+        {
+            Console.WriteLine("Need cups? No problem!"
+                + $" \n type 'yes' to purchase 50 cups for {cups.cost}; "
+                + " \n type 'no' to return to the store menu;"
+                + " \n type 'restart' to restart the game;"
+                + " \n or type 'quit' to exit the game."); 
+            string CupDecision = Console.ReadLine().ToLower().Trim();
+
+            switch (CupDecision)
+            {
+                case "yes":
+                    wallet.SubtractFromBalance(cups.cost);
+                    break;
+                case "no":
+                    StoreFront();
+                    break;
+                case "restart":
+                    break;
+                case "quit":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Please select a valid option.");
+                    SellCups(cups, wallet);
                         break;
             }
         }
-        private void LemonQuantities()
+        private void SellLemons(Lemons lemons, Wallet wallet)
         {
-            Console.WriteLine($"Lemons: '15', '30', '80'"); //add {.cost} for each quantity
-            int GetLemons = int.Parse(Console.ReadLine());
+            Console.WriteLine("Need lemons? No problem!"
+                + $" \n type 'yes' to purchase 30 lemons for {lemons.cost};"
+                + " \n type 'no' to return to the store;"
+                + " \n type 'restart' to restart the game;"
+                + " \n or type 'quit' to exit the game.");
+            string LemonDecision = Console.ReadLine().ToLower().Trim();
 
-            switch (GetLemons)
+            switch (LemonDecision)
             {
-                case 15:
+                case "yes":
+                    wallet.SubtractFromBalance(lemons.cost);
                     break;
-                case 30:
+                case "no":
+                    StoreFront();
                     break;
-                case 80:
+                case "restart":
+                    break;
+                case "quit":
+                    Environment.Exit(0);
                     break;
                 default:
-                    Console.WriteLine("Please select one of the quantities.");
-                    LemonQuantities();
+                    Console.WriteLine("Please select a valid option.");
+                    SellLemons(lemons, wallet);
                     break;
             }
         }
-        private void SugarQuantities()
+        private void SellSugar(Sugar sugar, Wallet wallet)
         {
-            Console.WriteLine($"Sugar: '8', '25', '48'"); //add {.cost} for each quantity
-            int GetSugar = int.Parse(Console.ReadLine());
+            Console.WriteLine("Need sugar? No problem!"
+                + $" \n type 'yes' to purchase 25 cups of sugar for {sugar.cost};"
+                + " \n type 'no' to return to the store;"
+                + " \n type 'restart' to restart the game;"
+                + " \n type 'quit' to exit the game.");
+            string SugarDecision = Console.ReadLine().ToLower().Trim();
 
-            switch (GetSugar)
+            switch (SugarDecision)
             {
-                case 8:
+                case "yes":
+                    wallet.SubtractFromBalance(sugar.cost);
                     break;
-                case 25:
+                case "no":
+                    StoreFront();
                     break;
-                case 48:
+                case "restart":
+                    break;
+                case "quit":
+                    Environment.Exit(0);
                     break;
                 default:
-                    Console.WriteLine("Please select one of the quantities.");
-                    SugarQuantities();
+                    Console.WriteLine("Please select a valid option.");
+                    SellSugar(sugar, wallet);
                     break;
             }
         }
-        private void IceQuantities()
+        private void SellIce(Ice ice, Wallet wallet)
         {
-            Console.WriteLine($"Ice: '100', '250', '500'"); //add {.cost} for each quantity
-            int GetIce = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Need ice? No problem!"
+                + $" \n type 'yes' to purchase 250 pounds of ice for {ice.cost};"
+                + " \n type 'no' to return to the store;"
+                + " \n type 'restart' to restart game;"
+                + " \n type 'quit' to exit the game.");
+            string IceDecision = Console.ReadLine().ToLower().Trim();
 
-            switch (GetIce)
+            switch (IceDecision)
             {
-                case 100:
+                case "yes":
+                    wallet.SubtractFromBalance(ice.cost);
                     break;
-                case 250:
-                    break;
-                case 500:
+                case "no":
+                    StoreFront();
                     break;
                 default:
-                    Console.WriteLine("Please select one of the quantities.");
-                    IceQuantities();
+                    Console.WriteLine("Please select a valid option.");
+                    SellIce(ice, wallet);
                     break;
             }
         }

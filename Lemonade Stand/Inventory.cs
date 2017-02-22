@@ -6,19 +6,8 @@ using System.Threading.Tasks;
 
 namespace Lemonade_Stand
 {
-    public class Inventory
+    class Inventory
     {
-        //member variables
-        public int quantity;
-        
-        public Inventory()
-        {
-            this.quantity = 0;
-            //constructor
-        }
-        public virtual void GetQuantities()
-        {
-
-        }
+        //make 4 lists for each item
     }
 }

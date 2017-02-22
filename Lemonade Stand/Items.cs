@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 
 namespace Lemonade_Stand
 {
-    public class Ice : Items
+    public class Items
     {
         //member variables
-        public Ice ()
+        public int quantity;
+        public double cost;
+        
+        public Items()
         {
-            cost = 2.00;
+            this.quantity = 0;
             //constructor
         }
-        public override void SetQuantities()
+        public virtual void SetQuantities()
         {
 
         }
-        public override void SetCost()
+        public virtual void SetCost()
         {
 
         }
