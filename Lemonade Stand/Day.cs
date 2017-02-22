@@ -8,9 +8,20 @@ namespace Lemonade_Stand
 {
     public class Day
     {
+        public Recipe recipe;
+        public Weather weather;
+        public Customer customer;
+        double dailysales;
+        double overallsales;
+
         //member variables
         public Day()
         {
+            recipe = new Recipe();
+            weather = new Weather();
+            customer = new Customer();
+            dailysales = 0;
+            overallsales = 0;
             //constructor
         }
         private void method()

@@ -10,12 +10,14 @@ namespace Lemonade_Stand
     {
         public Player player;
         public Store store;
-        //member variables
+        public Day day;
+
         public Game()
         {
             player = new Player();
             store = new Store();
-            //constructor
+            day = new Day();
+
         }
         private void method()
         {
