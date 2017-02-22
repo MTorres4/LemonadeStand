@@ -34,5 +34,4 @@ namespace Lemonade_Stand
             Welcome();
         }
     }
-} //Q: difference between using 'Welcome()' in Program versus using interface to use this in 'Game'?
-//A: either use dot notation in game class or program class
+} 

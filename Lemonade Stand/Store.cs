@@ -13,11 +13,11 @@ namespace Lemonade_Stand
         {
             //constructor
         }
-        public void StoreFront()
+        public void StoreFront(Player player)
         {
             Console.WriteLine("Welcome to the 'Lemonade 4u Products and Stuff' store!"
-                + $" \n your current wallet balance is:"
-                + $" \n your current inventory is:"
+                + $" \n your current wallet balance is: {player.wallet.balance}."
+                + $" \n your current inventory is: {player.inventory.cups.Count}, {player.inventory.lemons.Count}, {player.inventory.sugar.Count}, {player.inventory.ice.Count}."
                 + " \n type in which product you need: 'cups', 'lemons', 'sugar', or 'ice';"
                 + " \n or type in 'leave' to leave the store to go start your day of lemonade sales!"
                 + " \n Please type in one of the items to be able to restart to quit the game.");
@@ -26,27 +26,27 @@ namespace Lemonade_Stand
             switch (StoreMenuChoice)
             {
                 case "cups":
-                    SellCups(new Cups(), new Wallet());
+                    SellCups(new Cups(), new Player());
                     break;
                 case "lemons":
-                    SellLemons(new Lemons(), new Wallet());
+                    SellLemons(new Lemons(), new Player());
                     break;
                 case "sugar":
-                    SellSugar(new Sugar(), new Wallet());
+                    SellSugar(new Sugar(), new Player());
                     break;
                 case "ice":
-                    SellIce(new Ice(), new Wallet());
+                    SellIce(new Ice(), new Player());
                     break;
                 case "leave":
                     //send to recipe and price
                     break;
                 default:
                     Console.WriteLine("Please select one of the options.");
-                    StoreFront();
+                    StoreFront(new Player());
                     break;
             }
         }
-        private void SellCups(Cups cups, Wallet wallet)
+        private void SellCups(Cups cups, Player player)
         {
             Console.WriteLine("Need cups? No problem!"
                 + $" \n type 'yes' to purchase 50 cups for {cups.cost}; "
@@ -58,10 +58,11 @@ namespace Lemonade_Stand
             switch (CupDecision)
             {
                 case "yes":
-                    wallet.SubtractFromBalance(cups.cost);
+                    player.wallet.SubtractFromBalance(cups.cost);
+                    player.inventory.cups.Add(50);
                     break;
                 case "no":
-                    StoreFront();
+                    StoreFront(new Player());
                     break;
                 case "restart":
                     break;
@@ -70,11 +71,11 @@ namespace Lemonade_Stand
                     break;
                 default:
                     Console.WriteLine("Please select a valid option.");
-                    SellCups(cups, wallet);
+                    SellCups(cups, player);
                         break;
             }
         }
-        private void SellLemons(Lemons lemons, Wallet wallet)
+        private void SellLemons(Lemons lemons, Player player)
         {
             Console.WriteLine("Need lemons? No problem!"
                 + $" \n type 'yes' to purchase 30 lemons for {lemons.cost};"
@@ -86,10 +87,11 @@ namespace Lemonade_Stand
             switch (LemonDecision)
             {
                 case "yes":
-                    wallet.SubtractFromBalance(lemons.cost);
+                    player.wallet.SubtractFromBalance(lemons.cost);
+                    player.inventory.lemons.Add(30);
                     break;
                 case "no":
-                    StoreFront();
+                    StoreFront(new Player());
                     break;
                 case "restart":
                     break;
@@ -98,11 +100,11 @@ namespace Lemonade_Stand
                     break;
                 default:
                     Console.WriteLine("Please select a valid option.");
-                    SellLemons(lemons, wallet);
+                    SellLemons(lemons, player);
                     break;
             }
         }
-        private void SellSugar(Sugar sugar, Wallet wallet)
+        private void SellSugar(Sugar sugar, Player player)
         {
             Console.WriteLine("Need sugar? No problem!"
                 + $" \n type 'yes' to purchase 25 cups of sugar for {sugar.cost};"
@@ -114,10 +116,11 @@ namespace Lemonade_Stand
             switch (SugarDecision)
             {
                 case "yes":
-                    wallet.SubtractFromBalance(sugar.cost);
+                    player.wallet.SubtractFromBalance(sugar.cost);
+                    player.inventory.sugar.Add(25);
                     break;
                 case "no":
-                    StoreFront();
+                    StoreFront(new Player());
                     break;
                 case "restart":
                     break;
@@ -126,11 +129,11 @@ namespace Lemonade_Stand
                     break;
                 default:
                     Console.WriteLine("Please select a valid option.");
-                    SellSugar(sugar, wallet);
+                    SellSugar(sugar, player);
                     break;
             }
         }
-        private void SellIce(Ice ice, Wallet wallet)
+        private void SellIce(Ice ice, Player player)
         {
             Console.WriteLine($"Need ice? No problem!"
                 + $" \n type 'yes' to purchase 250 pounds of ice for {ice.cost};"
@@ -142,14 +145,15 @@ namespace Lemonade_Stand
             switch (IceDecision)
             {
                 case "yes":
-                    wallet.SubtractFromBalance(ice.cost);
+                    player.wallet.SubtractFromBalance(ice.cost);
+                    player.inventory.ice.Add(250);
                     break;
                 case "no":
-                    StoreFront();
+                    StoreFront(new Player());
                     break;
                 default:
                     Console.WriteLine("Please select a valid option.");
-                    SellIce(ice, wallet);
+                    SellIce(ice, player);
                     break;
             }
         }

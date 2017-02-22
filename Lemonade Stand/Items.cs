@@ -8,14 +8,12 @@ namespace Lemonade_Stand
 {
     public class Items
     {
-        //member variables
         public int quantity;
         public double cost;
         
         public Items()
         {
-            this.quantity = 0;
-            //constructor
+        
         }
         public virtual void SetQuantities()
         {

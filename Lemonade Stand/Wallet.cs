@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lemonade_Stand
 {
-    public class Wallet
+    public class Wallet : Player
     {
         public double balance;
 
