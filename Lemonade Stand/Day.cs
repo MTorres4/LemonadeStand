@@ -8,23 +8,32 @@ namespace Lemonade_Stand
 {
     public class Day
     {
-        public Recipe recipe;
         public Weather weather;
-        public Customer customer;
+        public Recipe recipe;
+        public List<Customer> customers;
         double dailysales;
         double overallsales;
 
         public Day()
         {
-            recipe = new Recipe();
             weather = new Weather();
-            customer = new Customer();
+            recipe = new Recipe();
+            customers = new List<Customer>();
             dailysales = 0;
             overallsales = 0;
         }
-        private void method()
+        private void GenerateCustomers()
         {
+            Random rnd = new Random();
+            for (int i=0; i < 90; i++)
+            {
+                customers.Add(new Customer(rnd.Next(0,90)));
+            }
+        }
 
+        public void NewDay()
+        {
+            GenerateCustomers();
         }
         //MakeRound
         //TODO need weather per one day

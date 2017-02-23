@@ -9,17 +9,14 @@ namespace Lemonade_Stand
     public class Weather
     {
         int weather;
-        string weatherOptions;
         int outlook;
-        int actual;
+        public int actual;
 
-        //member variables
         public Weather()
         {
-            string[] weatherOptions = { "Sunny", "Overcast", "Rainy" };
+            weather = 0;
             outlook = 0;
             actual = 0;
-            //constructor
         }
         private void SetWeather()
         {
@@ -27,16 +24,61 @@ namespace Lemonade_Stand
             weather = rnd.Next(4);
         }
 
+        private void DisplayWeather(int weather)
+        {
+            if(weather == 0)
+            {
+                Console.WriteLine("Sunny!");
+                Console.ReadLine();
+            }
+            else if(weather == 1)
+            {
+                Console.WriteLine("Overcast");
+                Console.ReadLine();
+            }
+            else if(weather == 2)
+            {
+                Console.WriteLine("Rainy");
+                Console.ReadLine();
+            }
+        }
         private void SetOutlookTemp()
         {
             Random rnd = new Random();
-            outlook = rnd.Next(50-100);
+            outlook = rnd.Next(50, 100);
+        }
+
+        private void DisplayOutlookTemp(int outlook)
+        {
+            Console.WriteLine($"{outlook}");
+            Console.ReadLine();
         }
 
         private void SetActualTemp()
         {
             Random rnd = new Random();
-            actual = rnd.Next(50 - 100);
+            actual = rnd.Next(50, 100);
+        }
+
+        private void DisplayActualTemp(int actual)
+        {
+            Console.WriteLine($"{actual}");
+            Console.ReadLine();
+        }
+        public void DayWeather()
+        {
+            SetWeather();
+            DisplayWeather(weather);
+            SetActualTemp();
+            DisplayActualTemp(actual);
+        }
+
+        public void WeekWeather()
+        {
+            SetWeather();
+            DisplayWeather(weather);
+            SetOutlookTemp();
+            DisplayOutlookTemp(outlook);
         }
     }
 }

@@ -25,6 +25,8 @@ namespace Lemonade_Stand
             store = new Store();
             store.StoreFront(player);
             day = new Day();
+            day.weather.DayWeather();
+            day.weather.WeekWeather();
         }
     }
 }

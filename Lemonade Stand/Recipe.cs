@@ -8,7 +8,7 @@ namespace Lemonade_Stand
 {
     public class Recipe
     {
-        private double price;
+        public double price;
         int lemons;
         int sugar;
         int ice;

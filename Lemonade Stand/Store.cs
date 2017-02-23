@@ -38,8 +38,7 @@ namespace Lemonade_Stand
                     SellIce(new Ice(), player);
                     break;
                 case "leave":
-                    //send to recipe and price
-                    break;
+                    return;
                 default:
                     Console.WriteLine("Please select one of the options.");
                     StoreFront(player);
