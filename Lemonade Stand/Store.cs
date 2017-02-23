@@ -49,7 +49,7 @@ namespace Lemonade_Stand
         private void SellCups(Cups cups, Player player)
         {
             Console.WriteLine("Need cups? No problem!"
-                + $" \n type 'yes' to purchase 50 cups for {cups.cost}; "
+                + $" \n type 'yes' to purchase 50 cups for ${cups.cost}; "
                 + " \n type 'no' to return to the store menu;"
                 + " \n type 'restart' to restart the game;"
                 + " \n or type 'quit' to exit the game."); 
@@ -79,7 +79,7 @@ namespace Lemonade_Stand
         private void SellLemons(Lemons lemons, Player player)
         {
             Console.WriteLine("Need lemons? No problem!"
-                + $" \n type 'yes' to purchase 30 lemons for {lemons.cost};"
+                + $" \n type 'yes' to purchase 30 lemons for ${lemons.cost};"
                 + " \n type 'no' to return to the store;"
                 + " \n type 'restart' to restart the game;"
                 + " \n or type 'quit' to exit the game.");
@@ -109,7 +109,7 @@ namespace Lemonade_Stand
         private void SellSugar(Sugar sugar, Player player)
         {
             Console.WriteLine("Need sugar? No problem!"
-                + $" \n type 'yes' to purchase 25 cups of sugar for {sugar.cost};"
+                + $" \n type 'yes' to purchase 25 cups of sugar for ${sugar.cost};"
                 + " \n type 'no' to return to the store;"
                 + " \n type 'restart' to restart the game;"
                 + " \n type 'quit' to exit the game.");
@@ -139,7 +139,7 @@ namespace Lemonade_Stand
         private void SellIce(Ice ice, Player player)
         {
             Console.WriteLine($"Need ice? No problem!"
-                + $" \n type 'yes' to purchase 250 pieces of ice for {ice.cost};"
+                + $" \n type 'yes' to purchase 250 pieces of ice for ${ice.cost};"
                 + " \n type 'no' to return to the store;"
                 + " \n type 'restart' to restart game;"
                 + " \n type 'quit' to exit the game.");

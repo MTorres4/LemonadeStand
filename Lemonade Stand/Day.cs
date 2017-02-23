@@ -14,7 +14,6 @@ namespace Lemonade_Stand
         double dailysales;
         double overallsales;
 
-        //member variables
         public Day()
         {
             recipe = new Recipe();
@@ -22,7 +21,6 @@ namespace Lemonade_Stand
             customer = new Customer();
             dailysales = 0;
             overallsales = 0;
-            //constructor
         }
         private void method()
         {
