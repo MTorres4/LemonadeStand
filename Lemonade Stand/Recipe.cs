@@ -38,13 +38,13 @@ namespace Lemonade_Stand
                 }
             }
         }
-        public void SetPrice()
+        private void SetPrice()
         {
             Console.WriteLine("How much would you like to charge for your your lemonade today?"
                 + " \n Please enter between 0.01 - 0.99");
             try
             {
-                Price = double.Parse(Console.ReadLine());
+                Price = double.Parse(Console.ReadLine().Trim());
             }
             catch(Exception)
             {
@@ -61,23 +61,29 @@ namespace Lemonade_Stand
             }
             set
             {
-                lemons = value;
+                if (value > 100 || value < 0)
+                {
+                    throw new Exception("Number is outside of valid range");
+                }
+                else
+                {
+                    lemons = value;
+                }
             }
         }
-        public int SetLemons()
+        private void SetLemons()
         {
             Console.WriteLine("How many lemons would you like to use per pitcher?"
-                + " \n Please enter an integer."
+                + " \n Please enter an integer between 0-100."
                 + " \n Remember, if you use up your inventory, you will close for the day.");
             try
             {
-                int lemons = int.Parse(Console.ReadLine());
-                return lemons;
+                Lemons = int.Parse(Console.ReadLine().Trim());
             }
-            catch(FormatException)
+            catch(Exception)
             {
-                Console.WriteLine("");
-                return SetLemons();
+                Console.WriteLine("Please enter a valid amount of lemons to use.");
+                SetLemons();
             }
         }
         public int Sugar
@@ -88,22 +94,29 @@ namespace Lemonade_Stand
             }
             set
             {
-                sugar = value;
+                if (value > 100 || value < 0)
+                {
+                    throw new Exception("Number outside of valid range.");
+                }
+                else
+                {
+                    sugar = value;
+                }
             }
         }
-        public int SetSugar()
+        private void SetSugar()
         {
             Console.WriteLine("How many cups of sugar would you like to use per pitcher?"
-                + " \n Please enter an integer");
+                + " \n Please enter an integer between 0-100."
+                + " \n Remember, if you use up your inventory, you will close for the day.");
             try
             {
-                int sugar = int.Parse(Console.ReadLine());
-                return sugar;
+                Sugar = int.Parse(Console.ReadLine().Trim());
             }
-            catch(FormatException)
+            catch(Exception)
             {
                 Console.WriteLine("Please enter a valid amount of sugar to use.");
-                return SetSugar();
+                SetSugar();
             }
         }
         public int Ice
@@ -114,23 +127,38 @@ namespace Lemonade_Stand
             }
             set
             {
-                ice = value;
+                if(value > 100 || value < 0)
+                {
+                    throw new Exception("Number outside of valid range.");
+                }
+                else
+                {
+                    ice = value;
+                }
             }
         }
-        public int SetIce()
+        private void SetIce()
         {
             Console.WriteLine("How many ice cubes per cup would you like?"
-                + " \n Please enter an integer.");
+                + " \n Please enter an integer between 0-100."
+                + " \n Remember, if you use up your inventory, you will close for the day.");
             try
             {
-                int ice = int.Parse(Console.ReadLine());
-                return ice;
+                Ice = int.Parse(Console.ReadLine().Trim());
             }
-            catch(FormatException)
+            catch(Exception)
             {
-                Console.WriteLine("Please enter a valid amount of ice cubes.");
-                return SetIce();
+                Console.WriteLine("Please enter a valid amount of ice cubes to use per cup.");
+                SetIce();
             }
+        }
+        public void SetRecipe()
+        {
+            Console.WriteLine("The following prompts will assist in setting the price and recipe for the day:");
+            SetPrice();
+            SetLemons();
+            SetSugar();
+            SetIce();
         }
     }
 }

@@ -15,9 +15,6 @@ namespace Lemonade_Stand
         public Game()
         {
             player = new Player();
-            store = new Store();
-            day = new Day();
-
         }
         private void method()
         {
@@ -25,8 +22,9 @@ namespace Lemonade_Stand
         }
         public void PlayGame()
         {
-            
-
+            store = new Store();
+            store.StoreFront(player);
+            day = new Day();
         }
     }
 }

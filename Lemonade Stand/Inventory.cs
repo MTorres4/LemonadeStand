@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Lemonade_Stand
 {
-    public class Inventory : Player
+    public class Inventory
     {
-        //public int available;
         public List<int> cups;
         public List<int> lemons;
         public List<int> sugar;
@@ -30,9 +29,34 @@ namespace Lemonade_Stand
             //}
             //Console.WriteLine("None left!");
         //}
-        //public void AddToAvailable(int amount)
-        //{
-          //  available += amount;
-        //}
+
+        public void AddToCups()
+        {
+            for (int i = 0; i < 50; i++)
+            {
+                cups.Add(50);
+            }
+        }
+        public void AddToLemons()
+        {
+            for(int i = 0; i < 30; i++)
+            {
+                lemons.Add(30);
+            }
+        }
+        public void AddToSugar()
+        {
+            for(int i = 0; i < 25; i++)
+            {
+                sugar.Add(25);
+            }
+        }
+        public void AddToIce()
+        {
+            for(int i = 0; i < 250; i++)
+            {
+                ice.Add(250);
+            }
+        }
     }
 }

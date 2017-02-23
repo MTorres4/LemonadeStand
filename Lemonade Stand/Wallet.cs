@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lemonade_Stand
 {
-    public class Wallet : Player
+    public class Wallet
     {
         public double balance;
 
@@ -17,13 +17,16 @@ namespace Lemonade_Stand
         }
         public void SubtractFromBalance(double AmountToSubtract)
         {
-            if(balance - AmountToSubtract >= 0)
+            if (balance - AmountToSubtract >= 0)
             {
                 balance -= AmountToSubtract;
             }
-            Console.WriteLine("You don't have enough money to purchase this item,"
-                + " \n you will need to use up your current inventory, or"
-                + " \n you can start the game over");
+            else
+            {
+                Console.WriteLine("You don't have enough money to purchase this item,"
+                  + " \n you will need to use up your current inventory, or"
+                  + " \n you can start the game over");
+            }
         }
         public void AddToBalance(double amount)
         {
