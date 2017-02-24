@@ -16,17 +16,14 @@ namespace Lemonade_Stand
         {
             player = new Player();
         }
-        private void method()
-        {
-
-        }
         public void PlayGame()
         {
-            store = new Store();
-            store.StoreFront(player);
+
             day = new Day();
+            day.NewDay(player);
+            store = new Store();
             day.weather.DayWeather();
-            day.weather.WeekWeather();
+            store.StoreFront(player, day);
         }
     }
 }

@@ -8,34 +8,82 @@ namespace Lemonade_Stand
 {
     public class Customer
     {
-
-        public Customer(int customer)
+        int willBuy;
+        public Customer()
         {
-            //CustomersToBuy();
+           
         }
 
         private void CustomersToBuy(Recipe recipe, Weather weather, Wallet wallet)
         {
-            if(recipe.price == 0.00 - 0.20 && weather.actual == 50 - 60)
+            if(recipe.price < 0.19 && weather.actual < 55)
             {
-                wallet.AddToBalance(recipe.price);
+                    wallet.AddToBalance(recipe.price);
             }
-            else if(recipe.price == 0.00 - 0.30 && weather.actual == 61 - 70)
+            else if(recipe.price < 0.20 && weather.actual > 56 && weather.actual < 60)
             {
-                wallet.AddToBalance(recipe.price);
+                Random rnd = new Random();
+                willBuy = rnd.Next(2);
+
+                if(willBuy == 0)
+                {
+                    wallet.AddToBalance(recipe.price);
+                }
+                else
+                {
+
+                }
             }
-            else if(recipe.price == 0.00 - 0.40 && weather.actual == 71 - 90)
+            else if(recipe.price < 0.30 && weather.actual > 61 && weather.actual < 70)
             {
-                wallet.AddToBalance(recipe.price);
+                Random rnd = new Random();
+                willBuy = rnd.Next(2);
+
+                if(willBuy == 0)
+                {
+                    wallet.AddToBalance(recipe.price);
+                }
+                else
+                {
+
+                }
             }
-            else if(recipe.price == 0.00 - 0.50 && weather.actual == 91 - 100)
+            else if(recipe.price < 0.40 && weather.actual > 71 && weather.actual < 90)
             {
-                wallet.AddToBalance(recipe.price);
+                Random rnd = new Random();
+                willBuy = rnd.Next(2);
+
+                if(willBuy == 0)
+                {
+                    wallet.AddToBalance(recipe.price);
+                }
+                else
+                {
+
+                }
+            }
+            else if(recipe.price < 0.50 && weather.actual > 91 && weather.actual < 100)
+            {
+                Random rnd = new Random();
+                willBuy = rnd.Next(2);
+
+                if(willBuy == 0)
+                {
+                    wallet.AddToBalance(recipe.price);
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+
             }
         }
-        public void SellLemonade()
+        public void BuyingLemonade(Recipe recipe, Weather weather, Wallet wallet)
         {
-
+            CustomersToBuy(recipe, weather, wallet);
         }
     }
 }

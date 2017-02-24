@@ -11,6 +11,7 @@ namespace Lemonade_Stand
         public Weather weather;
         public Recipe recipe;
         public List<Customer> customers;
+        Player player;
         double dailysales;
         double overallsales;
 
@@ -24,18 +25,22 @@ namespace Lemonade_Stand
         }
         private void GenerateCustomers()
         {
-            Random rnd = new Random();
             for (int i=0; i < 90; i++)
             {
-                customers.Add(new Customer(rnd.Next(0,90)));
+                customers.Add(new Customer());
             }
         }
 
-        public void NewDay()
+
+        public void NewDay(Player player)
         {
+            //weather.WeekWeather();
+            //weather.DayWeather();
             GenerateCustomers();
+            foreach (Customer customer in customers)
+            {
+                customer.BuyingLemonade(recipe, weather, player.wallet);
+            }
         }
-        //MakeRound
-        //TODO need weather per one day
     }
 }

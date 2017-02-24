@@ -13,39 +13,43 @@ namespace Lemonade_Stand
         {
 
         }
-        public void StoreFront(Player player)
+        public void StoreFront(Player player, Day day)
         {
-            Console.WriteLine("Welcome to the 'Lemonade 4u Products and Stuff' store!"
-                + $" \n Your current wallet balance is: ${player.wallet.balance}."
+            Console.WriteLine("     Welcome to the 'Lemonade 4u Products and Stuff' store!     "
+                            + " \n"
+                            + $" \n The TV at the store shows the 7 day forecast as: Day 1 Sunny!, I hope it stays that way!"
+                            + $" \n The sign at the store shows- weather/temperature today is: {day.weather.outside}, {day.weather.actual}."
+                            + $" \n Your current wallet balance is: ${player.wallet.balance}."
                 + $" \n Your current inventory is: cups: {player.inventory.cups.Count}, lemons: {player.inventory.lemons.Count}, sugar: {player.inventory.sugar.Count}, ice: {player.inventory.ice.Count}."
-                + " \n Type in which product you need: 'cups', 'lemons', 'sugar', or 'ice';"
-                + " \n or type in 'leave' to leave the store to go start your day of lemonade sales!"
-                + " \n Please type in one of the items to be able to restart to quit the game.");
+                            + " \n Type in which product you need: 'cups', 'lemons', 'sugar', or 'ice';"
+                            + " \n or type in 'leave' to leave the store to go start your day of lemonade sales!"
+                            + " \n Please type in one of the items to be able to restart to quit the game.");
             string StoreMenuChoice = Console.ReadLine().ToLower().Trim();
 
             switch (StoreMenuChoice)
             {
                 case "cups":
-                    SellCups(new Cups(), player);
+                    SellCups(new Cups(), player, day);
                     break;
                 case "lemons":
-                    SellLemons(new Lemons(), player);
+                    SellLemons(new Lemons(), player, day);
                     break;
                 case "sugar":
-                    SellSugar(new Sugar(), player);
+                    SellSugar(new Sugar(), player, day);
                     break;
                 case "ice":
-                    SellIce(new Ice(), player);
+                    SellIce(new Ice(), player, day);
                     break;
                 case "leave":
                     return;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Please select one of the options.");
-                    StoreFront(player);
+                    StoreFront(player, day);
                     break;
             }
         }
-        private void SellCups(Cups cups, Player player)
+        private void SellCups(Cups cups, Player player, Day day)
         {
             Console.WriteLine("Need cups? No problem!"
                 + $" \n type 'yes' to purchase 50 cups for ${cups.cost}; "
@@ -59,10 +63,10 @@ namespace Lemonade_Stand
                 case "yes":
                     player.wallet.SubtractFromBalance(cups.cost);
                     player.inventory.AddToCups();
-                    StoreFront(player);
+                    StoreFront(player, day);
                     break;
                 case "no":
-                    StoreFront(player);
+                    StoreFront(player, day);
                     break;
                 case "restart":
                     break;
@@ -70,12 +74,13 @@ namespace Lemonade_Stand
                     Environment.Exit(0);
                     break;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Please select a valid option.");
-                    SellCups(cups, player);
+                    SellCups(cups, player, day);
                         break;
             }
         }
-        private void SellLemons(Lemons lemons, Player player)
+        private void SellLemons(Lemons lemons, Player player, Day day)
         {
             Console.WriteLine("Need lemons? No problem!"
                 + $" \n type 'yes' to purchase 30 lemons for ${lemons.cost};"
@@ -89,10 +94,10 @@ namespace Lemonade_Stand
                 case "yes":
                     player.wallet.SubtractFromBalance(lemons.cost);
                     player.inventory.AddToLemons();
-                    StoreFront(player);
+                    StoreFront(player, day);
                     break;
                 case "no":
-                    StoreFront(player);
+                    StoreFront(player, day);
                     break;
                 case "restart":
                     break;
@@ -100,12 +105,13 @@ namespace Lemonade_Stand
                     Environment.Exit(0);
                     break;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Please select a valid option.");
-                    SellLemons(lemons, player);
+                    SellLemons(lemons, player, day);
                     break;
             }
         }
-        private void SellSugar(Sugar sugar, Player player)
+        private void SellSugar(Sugar sugar, Player player, Day day)
         {
             Console.WriteLine("Need sugar? No problem!"
                 + $" \n type 'yes' to purchase 25 cups of sugar for ${sugar.cost};"
@@ -119,10 +125,10 @@ namespace Lemonade_Stand
                 case "yes":
                     player.wallet.SubtractFromBalance(sugar.cost);
                     player.inventory.AddToSugar();
-                    StoreFront(player);
+                    StoreFront(player, day);
                     break;
                 case "no":
-                    StoreFront(player);
+                    StoreFront(player, day);
                     break;
                 case "restart":
                     break;
@@ -130,12 +136,13 @@ namespace Lemonade_Stand
                     Environment.Exit(0);
                     break;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Please select a valid option.");
-                    SellSugar(sugar, player);
+                    SellSugar(sugar, player, day);
                     break;
             }
         }
-        private void SellIce(Ice ice, Player player)
+        private void SellIce(Ice ice, Player player, Day day)
         {
             Console.WriteLine($"Need ice? No problem!"
                 + $" \n type 'yes' to purchase 250 pieces of ice for ${ice.cost};"
@@ -149,14 +156,15 @@ namespace Lemonade_Stand
                 case "yes":
                     player.wallet.SubtractFromBalance(ice.cost);
                     player.inventory.AddToIce();
-                    StoreFront(player);
+                    StoreFront(player, day);
                     break;
                 case "no":
-                    StoreFront(player);
+                    StoreFront(player, day);
                     break;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Please select a valid option.");
-                    SellIce(ice, player);
+                    SellIce(ice, player, day);
                     break;
             }
         }
