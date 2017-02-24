@@ -63,6 +63,7 @@ namespace Lemonade_Stand
                 case "yes":
                     player.wallet.SubtractFromBalance(cups.cost);
                     player.inventory.AddToCups();
+                    Console.Clear();
                     StoreFront(player, day);
                     break;
                 case "no":
@@ -94,6 +95,7 @@ namespace Lemonade_Stand
                 case "yes":
                     player.wallet.SubtractFromBalance(lemons.cost);
                     player.inventory.AddToLemons();
+                    Console.Clear();
                     StoreFront(player, day);
                     break;
                 case "no":
@@ -125,6 +127,7 @@ namespace Lemonade_Stand
                 case "yes":
                     player.wallet.SubtractFromBalance(sugar.cost);
                     player.inventory.AddToSugar();
+                    Console.Clear();
                     StoreFront(player, day);
                     break;
                 case "no":
@@ -156,6 +159,7 @@ namespace Lemonade_Stand
                 case "yes":
                     player.wallet.SubtractFromBalance(ice.cost);
                     player.inventory.AddToIce();
+                    Console.Clear();
                     StoreFront(player, day);
                     break;
                 case "no":

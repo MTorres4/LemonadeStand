@@ -9,86 +9,101 @@ namespace Lemonade_Stand
     public class Customer
     {
         int willBuy;
-        public Customer()
+        bool bought;
+        Random rnd;
+        public Customer(Random prob)
         {
-           
+            rnd = prob;
         }
 
-        private void CustomersToBuy(Player player, Day day)
+        private bool CustomersToBuy(Player player, Day day)
         {
-            if(day.recipe.price < 0.19 && day.weather.actual < 55)
+            if (day.recipe.price <= 0.19 && day.weather.actual <= 55)
             {
                 day.pitcher.PourPitcher(player, day);
                 player.wallet.AddToBalance(day.recipe.price);
+                bought = true;
+                return bought;
             }
-            else if(day.recipe.price < 0.20 && day.weather.actual > 56 && day.weather.actual < 60)
+            else if (day.recipe.price <= 0.20 && day.weather.actual >= 56 && day.weather.actual <= 60)
             {
-                Random rnd = new Random();
                 willBuy = rnd.Next(2);
 
-                if(willBuy == 0)
+                if (willBuy == 0)
                 {
                     day.pitcher.PourPitcher(player, day);
                     player.wallet.AddToBalance(day.recipe.price);
+                    bought = true;
+                    return bought;
                 }
                 else
                 {
-
+                    bought = false;
+                    return bought;
                 }
             }
-            else if(day.recipe.price < 0.30 && day.weather.actual > 61 && day.weather.actual < 70)
+            else if (day.recipe.price <= 0.30 && day.weather.actual >= 61 && day.weather.actual <= 70)
             {
-                Random rnd = new Random();
                 willBuy = rnd.Next(2);
 
-                if(willBuy == 0)
+                if (willBuy == 0)
                 {
                     day.pitcher.PourPitcher(player, day);
                     player.wallet.AddToBalance(day.recipe.price);
+                    bought = true;
+                    return bought;
                 }
                 else
                 {
-
+                    bought = false;
+                    return bought;
                 }
             }
-            else if(day.recipe.price < 0.40 && day.weather.actual > 71 && day.weather.actual < 90)
+            else if (day.recipe.price <= 0.40 && day.weather.actual >= 71 && day.weather.actual <= 90)
             {
-                Random rnd = new Random();
                 willBuy = rnd.Next(2);
 
-                if(willBuy == 0)
+                if (willBuy == 0)
                 {
                     day.pitcher.PourPitcher(player, day);
                     player.wallet.AddToBalance(day.recipe.price);
+                    bought = true;
+                    return bought;
                 }
                 else
                 {
-
+                    bought = false;
+                    return bought;
                 }
             }
-            else if(day.recipe.price < 0.50 && day.weather.actual > 91 && day.weather.actual < 100)
+            else if (day.recipe.price <= 0.50 && day.weather.actual >= 91 && day.weather.actual <= 100)
             {
-                Random rnd = new Random();
                 willBuy = rnd.Next(2);
 
-                if(willBuy == 0)
+                if (willBuy == 0)
                 {
                     day.pitcher.PourPitcher(player, day);
                     player.wallet.AddToBalance(day.recipe.price);
+                    bought = true;
+                    return bought;
                 }
                 else
                 {
-
+                    bought = false;
+                    return bought;
                 }
             }
             else
             {
-
+                bought = false;
+                return bought;
             }
         }
-        public void BuyingLemonade(Player player, Day day)
+        public bool BuyingLemonade(Player player, Day day)
         {
-            CustomersToBuy(player, day);
+            return CustomersToBuy(player, day);
+            
         }
+
     }
 }

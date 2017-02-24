@@ -73,7 +73,7 @@ namespace Lemonade_Stand
         }
         private void SetLemons(Player player)
         {
-            Console.WriteLine($" You currently have: {player.inventory.lemons.Count}"
+            Console.WriteLine($" You currently have: {player.inventory.lemons.Count} lemons."
                 + " \n How many lemons would you like to use per pitcher?"
                 + " \n Please enter an integer between 0-100."
                 + " \n Remember, if you use up your inventory, you will close for the day.");
@@ -107,7 +107,7 @@ namespace Lemonade_Stand
         }
         private void SetSugar(Player player)
         {
-            Console.WriteLine($"You currently have: {player.inventory.sugar.Count}"
+            Console.WriteLine($"You currently have: {player.inventory.sugar.Count} cups of sugar."
                 + " How many cups of sugar would you like to use per pitcher?"
                 + " \n Please enter an integer between 0-100."
                 + " \n Remember, if you use up your inventory, you will close for the day.");
@@ -141,7 +141,7 @@ namespace Lemonade_Stand
         }
         private void SetIce(Player player)
         {
-            Console.WriteLine($"You currently have: {player.inventory.ice.Count}"
+            Console.WriteLine($"You currently have: {player.inventory.ice.Count} pieces of ice."
                 + " \n How many ice cubes per cup would you like?"
                 + " \n Please enter an integer between 0-100."
                 + " \n Remember, if you use up your inventory, you will close for the day.");
@@ -162,6 +162,7 @@ namespace Lemonade_Stand
             SetLemons(player);
             SetSugar(player);
             SetIce(player);
+            Console.WriteLine("Time to start your day!!");
         }
     }
 }

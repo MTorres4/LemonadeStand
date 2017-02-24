@@ -12,8 +12,8 @@ namespace Lemonade_Stand
         public Recipe recipe;
         public List<Customer> customers;
         public Pitcher pitcher;
-        double dailysales;
-        double overallsales;
+        public int addBuy;
+        public double dailySales;
 
         public Day()
         {
@@ -21,28 +21,46 @@ namespace Lemonade_Stand
             recipe = new Recipe();
             pitcher = new Pitcher();
             customers = new List<Customer>();
-            dailysales = 0;
-            overallsales = 0;
+            addBuy = 0;
+            dailySales = 0;
         }
+ 
         private void GenerateCustomers()
         {
+            Random prob = new Random();
             for (int i=0; i < 90; i++)
             {
-                customers.Add(new Customer());
+                customers.Add(new Customer(prob));
             }
         }
 
         public void NewDay(Player player, Day day)
         {
-            //weather.WeekWeather();
-            //weather.DayWeather();
             recipe.SetRecipe(player);
             pitcher.MakePitcher(player, day);
             GenerateCustomers();
             foreach (Customer customer in customers)
             {
-                customer.BuyingLemonade(player, day);
+                bool didbuy = customer.BuyingLemonade(player, day);
+                if (didbuy)
+                {
+                    addBuy++;
+                }
             }
+        }
+
+        private void CalculateDailySales()
+        {
+            dailySales = addBuy * recipe.price;
+        }
+
+        public void DisplayDailySummary(Player player)
+        {
+            CalculateDailySales();
+            Console.WriteLine("Summay of day:"
+                + $" \n Total customers-{addBuy}"
+                + $" \n Total daily sales-{dailySales}"
+                + $" \n Your wallet balance- ${player.wallet.balance}");
         }
     }
 }

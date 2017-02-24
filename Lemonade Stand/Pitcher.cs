@@ -14,7 +14,7 @@ namespace Lemonade_Stand
         {
             full = 12;
         }
-        public int MakePitcher(Player player, Day day)
+        public void MakePitcher(Player player, Day day)
         {
             for(int i = 0; i < day.recipe.lemons; i++)
             {
@@ -24,31 +24,48 @@ namespace Lemonade_Stand
             {
                 player.inventory.sugar.RemoveAt(0);
             }
-            return full;
+            full = 12;
         }
 
         public void PourPitcher(Player player, Day day)
         {
-            full -= 1;
-            player.inventory.cups.RemoveAt(0);
-            for(int i = 0; i < day.recipe.ice; i++)
-            {
-                player.inventory.ice.RemoveAt(0);
-            }
-            if(full == 0)
+            if (full == 0)
             {
                 ConfirmInventory(player, day);
+            }
+            else
+            {
+                full -= 1;
+                player.inventory.cups.RemoveAt(0);
+
+                for (int i = 0; i < day.recipe.ice; i++)
+                {
+                    player.inventory.ice.RemoveAt(0);
+                }
             }
         }
 
         private void ConfirmInventory(Player player, Day day)
         {
-            do
+            if (player.inventory.cups.Count > 0 && player.inventory.lemons.Count > 0 && player.inventory.sugar.Count > 0 && player.inventory.ice.Count > 0)
             {
-                MakePitcher(player,day);
+                MakePitcher(player, day);
+                PourPitcher(player, day);
             }
-
-            while (player.inventory.cups.Count > 0 && player.inventory.lemons.Count > 0 && player.inventory.sugar.Count > 0 && player.inventory.ice.Count > 0);
+            else
+            {
+                Console.WriteLine("You sold out!"
+                    + $" \n Your current inventory is: cups- {player.inventory.cups.Count}, lemons- {player.inventory.lemons.Count}, sugar- {player.inventory.sugar.Count}, ice- {player.inventory.ice.Count}.");
+            }
+        }
+        private void InventoryValidation(Player player, Day day)
+        {
+            if(player.inventory.cups.Count == 0 || player.inventory.lemons.Count == 0 || player.inventory.sugar.Count == 0 || player.inventory.ice.Count == 0)
+            {
+                Console.WriteLine("You sold out!"
+                + $" \n Your current inventory is: cups- {player.inventory.cups.Count}, lemons- {player.inventory.lemons.Count}, sugar- {player.inventory.sugar.Count}, ice- {player.inventory.ice.Count}.");
+                day.DisplayDailySummary(player);
+            }
         }
     }
 }

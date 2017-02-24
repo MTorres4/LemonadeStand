@@ -16,6 +16,13 @@ namespace Lemonade_Stand
         {
             player = new Player();
         }
+        private void PlayRound()
+        {
+            while(player.round < 8)
+            {
+                PlayGame();
+            }
+        }
         public void PlayGame()
         {
             store = new Store();
@@ -23,6 +30,8 @@ namespace Lemonade_Stand
             day.weather.DayWeather();
             store.StoreFront(player, day);
             day.NewDay(player, day);
+            day.DisplayDailySummary(player);
+            player.round++;
         }
     }
 }
