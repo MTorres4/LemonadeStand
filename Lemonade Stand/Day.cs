@@ -12,6 +12,7 @@ namespace Lemonade_Stand
         public Recipe recipe;
         public List<Customer> customers;
         Player player;
+        public Pitcher pitcher;
         double dailysales;
         double overallsales;
 
@@ -19,6 +20,7 @@ namespace Lemonade_Stand
         {
             weather = new Weather();
             recipe = new Recipe();
+            pitcher = new Pitcher();
             customers = new List<Customer>();
             dailysales = 0;
             overallsales = 0;
@@ -31,11 +33,11 @@ namespace Lemonade_Stand
             }
         }
 
-
         public void NewDay(Player player)
         {
             //weather.WeekWeather();
             //weather.DayWeather();
+            recipe.SetRecipe(player);
             GenerateCustomers();
             foreach (Customer customer in customers)
             {

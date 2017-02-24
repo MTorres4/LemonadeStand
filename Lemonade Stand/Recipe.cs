@@ -9,9 +9,9 @@ namespace Lemonade_Stand
     public class Recipe
     {
         public double price;
-        int lemons;
-        int sugar;
-        int ice;
+        public int lemons;
+        public int sugar;
+        public int ice;
 
         public Recipe()
         {
@@ -71,9 +71,10 @@ namespace Lemonade_Stand
                 }
             }
         }
-        private void SetLemons()
+        private void SetLemons(Player player)
         {
-            Console.WriteLine("How many lemons would you like to use per pitcher?"
+            Console.WriteLine($" You currently have: {player.inventory.lemons.Count}"
+                + " \n How many lemons would you like to use per pitcher?"
                 + " \n Please enter an integer between 0-100."
                 + " \n Remember, if you use up your inventory, you will close for the day.");
             try
@@ -83,7 +84,7 @@ namespace Lemonade_Stand
             catch(Exception)
             {
                 Console.WriteLine("Please enter a valid amount of lemons to use.");
-                SetLemons();
+                SetLemons(player);
             }
         }
         public int Sugar
@@ -104,9 +105,10 @@ namespace Lemonade_Stand
                 }
             }
         }
-        private void SetSugar()
+        private void SetSugar(Player player)
         {
-            Console.WriteLine("How many cups of sugar would you like to use per pitcher?"
+            Console.WriteLine($"You currently have: {player.inventory.sugar.Count}"
+                + " How many cups of sugar would you like to use per pitcher?"
                 + " \n Please enter an integer between 0-100."
                 + " \n Remember, if you use up your inventory, you will close for the day.");
             try
@@ -116,7 +118,7 @@ namespace Lemonade_Stand
             catch(Exception)
             {
                 Console.WriteLine("Please enter a valid amount of sugar to use.");
-                SetSugar();
+                SetSugar(player);
             }
         }
         public int Ice
@@ -137,9 +139,10 @@ namespace Lemonade_Stand
                 }
             }
         }
-        private void SetIce()
+        private void SetIce(Player player)
         {
-            Console.WriteLine("How many ice cubes per cup would you like?"
+            Console.WriteLine($"You currently have: {player.inventory.ice.Count}"
+                + " \n How many ice cubes per cup would you like?"
                 + " \n Please enter an integer between 0-100."
                 + " \n Remember, if you use up your inventory, you will close for the day.");
             try
@@ -149,16 +152,16 @@ namespace Lemonade_Stand
             catch(Exception)
             {
                 Console.WriteLine("Please enter a valid amount of ice cubes to use per cup.");
-                SetIce();
+                SetIce(player);
             }
         }
-        public void SetRecipe()
+        public void SetRecipe(Player player)
         {
             Console.WriteLine("The following prompts will assist in setting the price and recipe for the day:");
             SetPrice();
-            SetLemons();
-            SetSugar();
-            SetIce();
+            SetLemons(player);
+            SetSugar(player);
+            SetIce(player);
         }
     }
 }
