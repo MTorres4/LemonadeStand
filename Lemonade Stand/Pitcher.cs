@@ -14,7 +14,7 @@ namespace Lemonade_Stand
         {
             full = 12;
         }
-        private int MakePitcher(Player player, Day day)
+        public int MakePitcher(Player player, Day day)
         {
             for(int i = 0; i < day.recipe.lemons; i++)
             {
@@ -41,7 +41,7 @@ namespace Lemonade_Stand
             }
         }
 
-        public void ConfirmInventory(Player player, Day day)
+        private void ConfirmInventory(Player player, Day day)
         {
             do
             {

@@ -11,7 +11,6 @@ namespace Lemonade_Stand
         public Weather weather;
         public Recipe recipe;
         public List<Customer> customers;
-        Player player;
         public Pitcher pitcher;
         double dailysales;
         double overallsales;
@@ -33,15 +32,16 @@ namespace Lemonade_Stand
             }
         }
 
-        public void NewDay(Player player)
+        public void NewDay(Player player, Day day)
         {
             //weather.WeekWeather();
             //weather.DayWeather();
             recipe.SetRecipe(player);
+            pitcher.MakePitcher(player, day);
             GenerateCustomers();
             foreach (Customer customer in customers)
             {
-                customer.BuyingLemonade(recipe, weather, player.wallet);
+                customer.BuyingLemonade(player, day);
             }
         }
     }

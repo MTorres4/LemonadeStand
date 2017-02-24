@@ -14,7 +14,7 @@ namespace Lemonade_Stand
            
         }
 
-        private void CustomersToBuy(Day day, Player player)
+        private void CustomersToBuy(Player player, Day day)
         {
             if(day.recipe.price < 0.19 && day.weather.actual < 55)
             {
@@ -28,6 +28,7 @@ namespace Lemonade_Stand
 
                 if(willBuy == 0)
                 {
+                    day.pitcher.PourPitcher(player, day);
                     player.wallet.AddToBalance(day.recipe.price);
                 }
                 else
@@ -42,6 +43,7 @@ namespace Lemonade_Stand
 
                 if(willBuy == 0)
                 {
+                    day.pitcher.PourPitcher(player, day);
                     player.wallet.AddToBalance(day.recipe.price);
                 }
                 else
@@ -56,6 +58,7 @@ namespace Lemonade_Stand
 
                 if(willBuy == 0)
                 {
+                    day.pitcher.PourPitcher(player, day);
                     player.wallet.AddToBalance(day.recipe.price);
                 }
                 else
@@ -70,6 +73,7 @@ namespace Lemonade_Stand
 
                 if(willBuy == 0)
                 {
+                    day.pitcher.PourPitcher(player, day);
                     player.wallet.AddToBalance(day.recipe.price);
                 }
                 else
@@ -82,9 +86,9 @@ namespace Lemonade_Stand
 
             }
         }
-        public void BuyingLemonade(Day day, Player player)
+        public void BuyingLemonade(Player player, Day day)
         {
-            CustomersToBuy(day, player);
+            CustomersToBuy(player, day);
         }
     }
 }
