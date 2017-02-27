@@ -56,15 +56,20 @@ namespace Lemonade_Stand
             {
                 Console.WriteLine("You sold out!"
                     + $" \n Your current inventory is: cups- {player.inventory.cups.Count}, lemons- {player.inventory.lemons.Count}, sugar- {player.inventory.sugar.Count}, ice- {player.inventory.ice.Count}.");
+                day.DisplayDailySummary(player);
             }
         }
-        private void InventoryValidation(Player player, Day day)
+        public void InventoryValidation(Player player, Day day)
         {
             if(player.inventory.cups.Count == 0 || player.inventory.lemons.Count == 0 || player.inventory.sugar.Count == 0 || player.inventory.ice.Count == 0)
             {
                 Console.WriteLine("You sold out!"
                 + $" \n Your current inventory is: cups- {player.inventory.cups.Count}, lemons- {player.inventory.lemons.Count}, sugar- {player.inventory.sugar.Count}, ice- {player.inventory.ice.Count}.");
                 day.DisplayDailySummary(player);
+            }
+            else
+            {
+                PourPitcher(player, day);
             }
         }
     }

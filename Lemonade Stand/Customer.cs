@@ -20,7 +20,7 @@ namespace Lemonade_Stand
         {
             if (day.recipe.price <= 0.19 && day.weather.actual <= 55)
             {
-                day.pitcher.PourPitcher(player, day);
+                day.pitcher.InventoryValidation(player, day);
                 player.wallet.AddToBalance(day.recipe.price);
                 bought = true;
                 return bought;
@@ -31,7 +31,7 @@ namespace Lemonade_Stand
 
                 if (willBuy == 0)
                 {
-                    day.pitcher.PourPitcher(player, day);
+                    day.pitcher.InventoryValidation(player, day);
                     player.wallet.AddToBalance(day.recipe.price);
                     bought = true;
                     return bought;
@@ -48,7 +48,7 @@ namespace Lemonade_Stand
 
                 if (willBuy == 0)
                 {
-                    day.pitcher.PourPitcher(player, day);
+                    day.pitcher.InventoryValidation(player, day);
                     player.wallet.AddToBalance(day.recipe.price);
                     bought = true;
                     return bought;
@@ -65,7 +65,7 @@ namespace Lemonade_Stand
 
                 if (willBuy == 0)
                 {
-                    day.pitcher.PourPitcher(player, day);
+                    day.pitcher.InventoryValidation(player, day);
                     player.wallet.AddToBalance(day.recipe.price);
                     bought = true;
                     return bought;
@@ -82,7 +82,7 @@ namespace Lemonade_Stand
 
                 if (willBuy == 0)
                 {
-                    day.pitcher.PourPitcher(player, day);
+                    day.pitcher.InventoryValidation(player, day);
                     player.wallet.AddToBalance(day.recipe.price);
                     bought = true;
                     return bought;

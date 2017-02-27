@@ -30,8 +30,8 @@ namespace Lemonade_Stand
             day.weather.DayWeather();
             store.StoreFront(player, day);
             day.NewDay(player, day);
-            day.DisplayDailySummary(player);
             player.round++;
+            PlayRound();
         }
     }
 }
