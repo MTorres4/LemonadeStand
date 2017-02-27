@@ -47,7 +47,6 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Day.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="Ledger.cs" />
     <Compile Include="Pitcher.cs" />
     <Compile Include="Ice.cs" />
     <Compile Include="Instructions.cs" />

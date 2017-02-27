@@ -19,16 +19,14 @@ namespace Lemonade_Stand
             balance -= AmountToSubtract;
         }
 
-        public bool ConfirmWalletBalance()
+        public bool ConfirmWalletBalance(double amount)
         {
-            if(balance > 0)
+            if(balance - amount> 0)
             {
                 return true;
             }
             else
             {
-                Console.WriteLine("You don't have enough money to purchase this item,"
-                    + " \n you will need to start over or use up what you have");
                 return false;
             }
         }

@@ -16,6 +16,36 @@ namespace Lemonade_Stand
         {
             player = new Player();
         }
+
+        private void ContinueToPlay()
+        {
+            Console.WriteLine("Would you like to continue to play?"
+                + " \n Type 'yes' to continue,"
+                + " \n Type 'no' to quit,"
+                + " \n or Type 'restart' to start the game over.");
+            string ContinueDecision = Console.ReadLine().ToLower().Trim();
+
+            switch (ContinueDecision)
+            {
+                case "yes":
+                    Console.Clear();
+                    PlayRound();
+                    break;
+                case "no":
+                    Environment.Exit(0);
+                    break;
+                case "restart":
+                    player = new Player();
+                    PlayGame();
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Please select a valid option");
+                    ContinueToPlay();
+                    break;
+            }
+        }
+
         private void PlayRound()
         {
             for (int i = 0; player.round < 7; i++)
@@ -90,7 +120,7 @@ namespace Lemonade_Stand
             day.NewDay(player, day);
             day.DisplayDailySummary(player);
             player.round++;
-            PlayRound();
+            ContinueToPlay();
         }
     }
 }
