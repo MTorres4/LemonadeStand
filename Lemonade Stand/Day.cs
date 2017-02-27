@@ -45,6 +45,8 @@ namespace Lemonade_Stand
                 if (didbuy)
                 {
                     addBuy++;
+                    ValidateInventoryPourPitcher(player, day);
+                    player.wallet.AddToBalance(day.recipe.price);
                 }
             }
         }
@@ -62,5 +64,32 @@ namespace Lemonade_Stand
                 + $" \n Total daily sales-{dailySales}"
                 + $" \n Your wallet balance- ${player.wallet.balance}");
         }
+
+        public void ConfirmInventoryNewPitcher(Player player, Day day)
+        {
+            if (player.inventory.cups.Count > 0 && player.inventory.lemons.Count >= recipe.lemons && player.inventory.sugar.Count >= recipe.sugar && player.inventory.ice.Count >= recipe.ice)
+            {
+                pitcher.MakePitcher(player, day);
+            }
+            else
+            {
+                Console.WriteLine("You sold out!"
+                    + $" \n Your current inventory is: cups- {player.inventory.cups.Count}, lemons- {player.inventory.lemons.Count}, sugar- {player.inventory.sugar.Count}, ice- {player.inventory.ice.Count}");
+            }
+        }
+
+        private void ValidateInventoryPourPitcher(Player player, Day day)
+        {
+            if (player.inventory.cups.Count > 0 && player.inventory.lemons.Count > 0 && player.inventory.sugar.Count > 0 && player.inventory.ice.Count > 0)
+            {
+                pitcher.PourPitcher(player, day);
+            }
+            else
+            {
+                Console.WriteLine("You sold out!"
+                    + $" \n Your current inventory is: cups- {player.inventory.cups.Count}, lemons- {player.inventory.lemons.Count}, sugar- {player.inventory.sugar.Count}, ice- {player.inventory.ice.Count}");
+            }
+        }
+
     }
 }

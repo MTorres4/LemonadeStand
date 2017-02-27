@@ -17,7 +17,9 @@ namespace Lemonade_Stand
         {
             Console.WriteLine("     Welcome to the 'Lemonade 4u Products and Stuff' store!     "
                             + " \n"
-                            + $" \n The TV at the store shows the 7 day forecast as: Day 1 Sunny!, I hope it stays that way!"
+                            + $" \n The TV at the store shows the 7 day forecast as: "
+                            + " \n Day 1 Sunny! 64, Day 2 Overcast 76, Day 3 Sunny! 88, Day 4 Rainy 57,"
+                            + " \n Day 5 Overcast 55, Day 6 Sunny! 83, Day 7 Rainy 73; I hope it stays that way!"
                             + $" \n The sign at the store shows- weather/temperature today is: {day.weather.outside}, {day.weather.actual}."
                             + $" \n Your current wallet balance is: ${player.wallet.balance}."
                 + $" \n Your current inventory is: cups: {player.inventory.cups.Count}, lemons: {player.inventory.lemons.Count}, sugar: {player.inventory.sugar.Count}, ice: {player.inventory.ice.Count}."

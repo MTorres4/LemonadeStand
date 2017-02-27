@@ -12,7 +12,7 @@ namespace Lemonade_Stand
 
         public Pitcher()
         {
-            full = 12;
+            full = 10;
         }
         public void MakePitcher(Player player, Day day)
         {
@@ -24,14 +24,14 @@ namespace Lemonade_Stand
             {
                 player.inventory.sugar.RemoveAt(0);
             }
-            full = 12;
+            full = 10;
         }
 
         public void PourPitcher(Player player, Day day)
         {
             if (full == 0)
             {
-                ConfirmInventory(player, day);
+                day.ConfirmInventoryNewPitcher(player, day);
             }
             else
             {
@@ -42,34 +42,6 @@ namespace Lemonade_Stand
                 {
                     player.inventory.ice.RemoveAt(0);
                 }
-            }
-        }
-
-        private void ConfirmInventory(Player player, Day day)
-        {
-            if (player.inventory.cups.Count > 0 && player.inventory.lemons.Count > 0 && player.inventory.sugar.Count > 0 && player.inventory.ice.Count > 0)
-            {
-                MakePitcher(player, day);
-                PourPitcher(player, day);
-            }
-            else
-            {
-                Console.WriteLine("You sold out!"
-                    + $" \n Your current inventory is: cups- {player.inventory.cups.Count}, lemons- {player.inventory.lemons.Count}, sugar- {player.inventory.sugar.Count}, ice- {player.inventory.ice.Count}.");
-                day.DisplayDailySummary(player);
-            }
-        }
-        public void InventoryValidation(Player player, Day day)
-        {
-            if(player.inventory.cups.Count == 0 || player.inventory.lemons.Count == 0 || player.inventory.sugar.Count == 0 || player.inventory.ice.Count == 0)
-            {
-                Console.WriteLine("You sold out!"
-                + $" \n Your current inventory is: cups- {player.inventory.cups.Count}, lemons- {player.inventory.lemons.Count}, sugar- {player.inventory.sugar.Count}, ice- {player.inventory.ice.Count}.");
-                day.DisplayDailySummary(player);
-            }
-            else
-            {
-                PourPitcher(player, day);
             }
         }
     }
