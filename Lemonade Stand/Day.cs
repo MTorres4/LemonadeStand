@@ -75,7 +75,7 @@ namespace Lemonade_Stand
             {
                 Console.WriteLine("You sold out!"
                     + $" \n Your current inventory is: cups- {player.inventory.cups.Count}, lemons- {player.inventory.lemons.Count}, sugar- {player.inventory.sugar.Count}, ice- {player.inventory.ice.Count}");
-                DisplayDailySummary(player);
+                return;
             }
         }
 
@@ -89,7 +89,7 @@ namespace Lemonade_Stand
             {
                 Console.WriteLine("You sold out!"
                     + $" \n Your current inventory is: cups- {player.inventory.cups.Count}, lemons- {player.inventory.lemons.Count}, sugar- {player.inventory.sugar.Count}, ice- {player.inventory.ice.Count}");
-                DisplayDailySummary(player);
+                return;
             }
         }
 
