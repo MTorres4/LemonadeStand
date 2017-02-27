@@ -21,14 +21,6 @@ namespace Lemonade_Stand
         ice = new List<int>();
 
         }
-       // public void SubtractFromAvailable(int AmountToSubtract)
-        //{
-          //  if(available - AmountToSubtract >= 0)
-            //{
-              //  available -= AmountToSubtract;
-            //}
-            //Console.WriteLine("None left!");
-        //}
 
         public void AddToCups()
         {

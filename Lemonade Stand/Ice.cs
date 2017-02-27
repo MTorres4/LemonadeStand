@@ -8,11 +8,9 @@ namespace Lemonade_Stand
 {
     public class Ice : Items
     {
-        //member variables
         public Ice ()
         {
             cost = 2.00;
-            //constructor
         }
         public override void SetQuantities()
         {

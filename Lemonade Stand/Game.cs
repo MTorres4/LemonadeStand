@@ -18,11 +18,69 @@ namespace Lemonade_Stand
         }
         private void PlayRound()
         {
-            while(player.round < 8)
+            for (int i = 0; player.round < 7; i++)
             {
                 PlayGame();
             }
+            if(player.round == 7)
+            {
+                DetermineProfitorLoss(player);
+            }
         }
+
+        private void DetermineProfitorLoss(Player player)
+        {
+            if(player.wallet.balance > 50.00)
+            {
+                Console.WriteLine("Yay! You made a great profit and have enough to buy the game!");
+                EndGame();
+            }
+            else if(player.wallet.balance > 40.00)
+            {
+                Console.WriteLine("Great job! You made a profit, but you will need to trade-in Madden to get For Honor...");
+                EndGame();
+            }
+            else if(player.wallet.balance > 30.00)
+            {
+                Console.WriteLine("Good work! You made a profit, but you will need to sell your holographic Bulbasaur card...");
+                EndGame();
+            }
+            else if(player.wallet.balance >= 20.00)
+            {
+                Console.WriteLine("Not bad, you made a little more than what you started with... maybe sell some beanie babies and lemonade...");
+                EndGame();
+            }
+            else
+            {
+                Console.WriteLine("Unfortunately, you did not make a profit... You may need to sell Madden, your holographic Bulbasaur card, and some beanie babies...");
+                EndGame();
+            }
+        }
+
+        private void EndGame()
+        {
+            Console.WriteLine("             Thank you for playing!"
+                + " \n Type 'play again' to restart the game, or 'quit' to exit the game");
+            string EndDecision = Console.ReadLine().ToLower().Trim();
+
+            switch (EndDecision)
+            {
+                case "play again":
+                    player = new Player();
+                    PlayGame();
+                    break;
+                case "quit":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Please enter a valid option");
+                    EndGame();
+                    break;
+            }
+
+        }
+
         public void PlayGame()
         {
             store = new Store();

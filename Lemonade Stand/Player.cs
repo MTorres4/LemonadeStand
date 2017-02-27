@@ -11,7 +11,6 @@ namespace Lemonade_Stand
         public int round;
         public Wallet wallet;
         public Inventory inventory;
-        //member variables
 
         public Player()
         {
@@ -19,7 +18,6 @@ namespace Lemonade_Stand
             wallet = new Wallet();
             inventory = new Inventory();
 
-            //constructor
         }
     }
 }

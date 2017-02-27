@@ -13,7 +13,7 @@ namespace Lemonade_Stand
         {
 
         }
-        public void StoreFront(Player player, Day day)
+        public void StoreFront(Player player, Day day, Game game)
         {
             Console.WriteLine("     Welcome to the 'Lemonade 4u Products and Stuff' store!     "
                             + " \n"
@@ -31,27 +31,27 @@ namespace Lemonade_Stand
             switch (StoreMenuChoice)
             {
                 case "cups":
-                    SellCups(new Cups(), player, day);
+                    SellCups(new Cups(), player, day, game);
                     break;
                 case "lemons":
-                    SellLemons(new Lemons(), player, day);
+                    SellLemons(new Lemons(), player, day, game);
                     break;
                 case "sugar":
-                    SellSugar(new Sugar(), player, day);
+                    SellSugar(new Sugar(), player, day, game);
                     break;
                 case "ice":
-                    SellIce(new Ice(), player, day);
+                    SellIce(new Ice(), player, day, game);
                     break;
                 case "leave":
                     return;
                 default:
                     Console.Clear();
                     Console.WriteLine("Please select one of the options.");
-                    StoreFront(player, day);
+                    StoreFront(player, day, game);
                     break;
             }
         }
-        private void SellCups(Cups cups, Player player, Day day)
+        private void SellCups(Cups cups, Player player, Day day, Game game)
         {
             Console.WriteLine("Need cups? No problem!"
                 + $" \n type 'yes' to purchase 50 cups for ${cups.cost}; "
@@ -66,12 +66,14 @@ namespace Lemonade_Stand
                     player.wallet.SubtractFromBalance(cups.cost);
                     player.inventory.AddToCups();
                     Console.Clear();
-                    StoreFront(player, day);
+                    StoreFront(player, day, game);
                     break;
                 case "no":
-                    StoreFront(player, day);
+                    StoreFront(player, day, game);
                     break;
                 case "restart":
+                    player = new Player();
+                    game.PlayGame();
                     break;
                 case "quit":
                     Environment.Exit(0);
@@ -79,11 +81,11 @@ namespace Lemonade_Stand
                 default:
                     Console.Clear();
                     Console.WriteLine("Please select a valid option.");
-                    SellCups(cups, player, day);
+                    SellCups(cups, player, day, game);
                         break;
             }
         }
-        private void SellLemons(Lemons lemons, Player player, Day day)
+        private void SellLemons(Lemons lemons, Player player, Day day, Game game)
         {
             Console.WriteLine("Need lemons? No problem!"
                 + $" \n type 'yes' to purchase 30 lemons for ${lemons.cost};"
@@ -98,12 +100,14 @@ namespace Lemonade_Stand
                     player.wallet.SubtractFromBalance(lemons.cost);
                     player.inventory.AddToLemons();
                     Console.Clear();
-                    StoreFront(player, day);
+                    StoreFront(player, day, game);
                     break;
                 case "no":
-                    StoreFront(player, day);
+                    StoreFront(player, day, game);
                     break;
                 case "restart":
+                    player = new Player();
+                    game.PlayGame();
                     break;
                 case "quit":
                     Environment.Exit(0);
@@ -111,11 +115,11 @@ namespace Lemonade_Stand
                 default:
                     Console.Clear();
                     Console.WriteLine("Please select a valid option.");
-                    SellLemons(lemons, player, day);
+                    SellLemons(lemons, player, day, game);
                     break;
             }
         }
-        private void SellSugar(Sugar sugar, Player player, Day day)
+        private void SellSugar(Sugar sugar, Player player, Day day, Game game)
         {
             Console.WriteLine("Need sugar? No problem!"
                 + $" \n type 'yes' to purchase 25 cups of sugar for ${sugar.cost};"
@@ -130,12 +134,14 @@ namespace Lemonade_Stand
                     player.wallet.SubtractFromBalance(sugar.cost);
                     player.inventory.AddToSugar();
                     Console.Clear();
-                    StoreFront(player, day);
+                    StoreFront(player, day, game);
                     break;
                 case "no":
-                    StoreFront(player, day);
+                    StoreFront(player, day, game);
                     break;
                 case "restart":
+                    player = new Player();
+                    game.PlayGame();
                     break;
                 case "quit":
                     Environment.Exit(0);
@@ -143,11 +149,11 @@ namespace Lemonade_Stand
                 default:
                     Console.Clear();
                     Console.WriteLine("Please select a valid option.");
-                    SellSugar(sugar, player, day);
+                    SellSugar(sugar, player, day, game);
                     break;
             }
         }
-        private void SellIce(Ice ice, Player player, Day day)
+        private void SellIce(Ice ice, Player player, Day day, Game game)
         {
             Console.WriteLine($"Need ice? No problem!"
                 + $" \n type 'yes' to purchase 250 pieces of ice for ${ice.cost};"
@@ -162,15 +168,22 @@ namespace Lemonade_Stand
                     player.wallet.SubtractFromBalance(ice.cost);
                     player.inventory.AddToIce();
                     Console.Clear();
-                    StoreFront(player, day);
+                    StoreFront(player, day, game);
                     break;
                 case "no":
-                    StoreFront(player, day);
+                    StoreFront(player, day, game);
+                    break;
+                case "restart":
+                    player = new Player();
+                    game.PlayGame();
+                    break;
+                case "quit":
+                    Environment.Exit(0);
                     break;
                 default:
                     Console.Clear();
                     Console.WriteLine("Please select a valid option.");
-                    SellIce(ice, player, day);
+                    SellIce(ice, player, day, game);
                     break;
             }
         }
